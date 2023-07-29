@@ -46,7 +46,6 @@ public class TheScript : MonoBehaviour
         if (collision.gameObject.CompareTag("Barrier"))
         {
             JumpAvalable = true;
-            Debug.Log("Collision");
         }
     }
 }
