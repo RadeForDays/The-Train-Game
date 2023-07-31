@@ -16,9 +16,9 @@ public class BackGroundHandler : MonoBehaviour
     {
         transform.position += new Vector3(-1*Speed*Time.deltaTime,0,0);
 
-        if (transform.position.x <= -34)
+        if (transform.position.x <= -40)
         {
-            transform.position = new Vector3(35,0,0);
+            transform.position = new Vector3(88,3,0);
         }
     }
 }
