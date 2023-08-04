@@ -11,14 +11,12 @@ public class VentScript : MonoBehaviour
     private SpriteRenderer SR;
     public float MaxBound;
     private TheScript playerscript;
-    private TextMeshProGUI text;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         SR = GetComponent<SpriteRenderer>();
         playerscript = player.gameObject.GetComponent("TheScript") as TheScript;
-        text = GameObject.FindGameObjectWithTag("tmp_object");
     }
     // Update is called once per frame
     void Update()
@@ -33,7 +31,11 @@ public class VentScript : MonoBehaviour
         
         if ((pos_player.x - pos_vent.x) < MaxBound & (pos_player.x - pos_vent.x) > -MaxBound)
         {
-            
+            FindObjectOfType<TextMeshProUGUI>().enabled = true;
+        }
+        else
+        {
+            FindObjectOfType<TextMeshProUGUI>().enabled = false;
         }
     }
     void CheckPos()
@@ -42,7 +44,6 @@ public class VentScript : MonoBehaviour
         Vector3 pos_vent = transform.position;
         if ((pos_player.x - pos_vent.x) < MaxBound & (pos_player.x - pos_vent.x) > -MaxBound)
         {
-            SR.color = Color.blue;
             playerscript.MovingToMiniGame();
         }
     }
