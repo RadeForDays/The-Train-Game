@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Barrier
+  - tmp_object
   layers:
   - Default
   - TransparentFX
@@ -15,8 +16,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - train
+  - player
   - 
   - 
   - 

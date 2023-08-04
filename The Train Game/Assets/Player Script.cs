@@ -9,6 +9,7 @@ public class TheScript : MonoBehaviour
     public float speed;
     public float Jump;
     private bool JumpAvalable;
+    public bool ControllerOn = true;
     void Start()
     {
         
@@ -21,16 +22,20 @@ public class TheScript : MonoBehaviour
     }
     void InputHandler()
     {
-        float Movement_RightLeft = Input.GetAxis("Horizontal");
-        float Movement_UpDown = Input.GetAxis("Vertical");
-        if (Movement_RightLeft != 0f)
-        {
-            player.velocity = new Vector2(Movement_RightLeft * speed * Time.deltaTime, player.velocity.y);
-        }
-        if ((Movement_UpDown != 0f) && (JumpAvalable == true))
-        {
-            JumpAvalable = false;
-            player.velocity = new Vector2(player.velocity.x, Jump);
+        if (ControllerOn)
+        { 
+            float Movement_RightLeft = Input.GetAxis("Horizontal");
+            float Movement_UpDown = Input.GetAxis("Vertical");
+            if (Movement_RightLeft != 0f)
+            {
+                player.velocity = new Vector2(Movement_RightLeft * speed * Time.deltaTime, player.velocity.y);
+            }
+            if ((Movement_UpDown != 0f) && (JumpAvalable == true))
+            {
+                JumpAvalable = false;
+                player.velocity = new Vector2(player.velocity.x, Jump);
+            }
+           
         }
     }
     void OnCollisionEnter2D(Collision2D collision)
@@ -43,9 +48,15 @@ public class TheScript : MonoBehaviour
     }
     void JumpRenew(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Barrier"))
+        if (collision.gameObject.CompareTag("Barrier") &&  (ControllerOn))
         {
             JumpAvalable = true;
         }
+    }
+    public void MovingToMiniGame()
+    {
+        player.gravityScale = 0;
+        transform.position = new Vector3 (0,20,0);
+        ControllerOn = false;
     }
 }
