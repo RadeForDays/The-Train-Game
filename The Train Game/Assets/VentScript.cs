@@ -11,40 +11,50 @@ public class VentScript : MonoBehaviour
     private SpriteRenderer SR;
     public float MaxBound;
     private TheScript playerscript;
+    public TMPro.TMP_Text EText; 
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         SR = GetComponent<SpriteRenderer>();
         playerscript = player.gameObject.GetComponent("TheScript") as TheScript;
+        EText = GameObject.FindGameObjectWithTag("Text").GetComponent<TMPro.TMP_Text>();
     }
     // Update is called once per frame
     void Update()
     {   
-        Vector3 pos_player = player.transform.position;
-        Vector3 pos_vent = transform.position;
-
+        
+        HandleInput();
+    }
+    void HandleInput()
+    {
+        Checkpos();
         if (Input.GetKeyDown(KeyCode.E))
         {
-            CheckPos();
-        }
-        
-        if ((pos_player.x - pos_vent.x) < MaxBound & (pos_player.x - pos_vent.x) > -MaxBound)
-        {
-            FindObjectOfType<TextMeshProUGUI>().enabled = true;
-        }
-        else
-        {
-            FindObjectOfType<TextMeshProUGUI>().enabled = false;
+            CheckOnEClick();
         }
     }
-    void CheckPos()
+    void CheckOnEClick()
     {
         Vector3 pos_player = player.transform.position;
         Vector3 pos_vent = transform.position;
         if ((pos_player.x - pos_vent.x) < MaxBound & (pos_player.x - pos_vent.x) > -MaxBound)
         {
             playerscript.MovingToMiniGame();
+        }
+    }
+    void Checkpos()
+    {
+        Vector3 pos_player = player.transform.position;
+        Vector3 pos_vent = transform.position;
+        
+        if ((pos_player.x - pos_vent.x) < MaxBound & (pos_player.x - pos_vent.x) > -MaxBound)
+        {
+            EText.text = "E";
+        }
+        else
+        {
+            EText.text = "";
         }
     }
 }

@@ -12,7 +12,7 @@ public class BackGroundHandler : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         transform.position += new Vector3(-1*Speed*Time.deltaTime,0,0);
 
