@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class keyscript : MonoBehaviour
 {
-    public Vector2 CurrentPos = new Vector2(-2,-2);
+    private Vector2 CurrentPos = new Vector2(-2,-2);
     private Vector2 Winningpos = new Vector2(0,0);
     private Vector2 Losingpos = new Vector2(0,1);
+    public GameObject Tile;
     void Start()
     {
-        
+        CreateGrid(5,5);
     }
 
     // Update is called once per frame
@@ -50,7 +51,17 @@ public class keyscript : MonoBehaviour
                 transform.position -= new Vector3(2,0,0);
                 CurrentPos += new Vector2(-1,0);
             }
-            
         } 
+    }
+    private void CreateGrid(int x, int y)
+    {
+        for (int i=0;i<x;i++)
+        {
+            for (int j=0;j<y;j++)
+            {
+                Instantiate(Tile,new Vector3(i*2-x+1,j*2-y+1,0),Quaternion.identity);
+                Debug.Log("It Works");
+            }
+        }
     }
 }
