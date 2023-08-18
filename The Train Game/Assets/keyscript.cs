@@ -5,8 +5,8 @@ using UnityEngine;
 public class keyscript : MonoBehaviour
 {
     private Vector2 CurrentPos = new Vector2(-2,-2);
-    private Vector2 Winningpos = new Vector2(0,0);
-    private Vector2 Losingpos = new Vector2(0,1);
+    public Vector2 Winningpos = new Vector2(0,0);
+    public Vector2 Losingpos = new Vector2(0,0);
     public GameObject Tile;
     void Start()
     {
@@ -60,8 +60,14 @@ public class keyscript : MonoBehaviour
             for (int j=0;j<y;j++)
             {
                 Instantiate(Tile,new Vector3(i*2-x+1,j*2-y+1,0),Quaternion.identity);
-                Debug.Log("It Works");
+                Winningpos = RandomPosGenerater(0,x,0,y);
+                Losingpos = RandomPosGenerater(0,x,0,y);
             }
         }
+    }
+    private void RandomPosGenerater(int Min1,int Max1,int Min2,int Max2)
+    {
+        private Vector2 NewPos = new Vector2 (Random.Range(Min1,Max1),Random.Range(Min2,Max2));
+        return NewPos;
     }
 }
