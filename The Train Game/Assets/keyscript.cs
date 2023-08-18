@@ -65,9 +65,9 @@ public class keyscript : MonoBehaviour
             }
         }
     }
-    private void RandomPosGenerater(int Min1,int Max1,int Min2,int Max2)
+    private Vector2 RandomPosGenerater(int Min1,int Max1,int Min2,int Max2)
     {
-        private Vector2 NewPos = new Vector2 (Random.Range(Min1,Max1),Random.Range(Min2,Max2));
+        Vector2 NewPos = new Vector2 (Random.Range(Min1,Max1),Random.Range(Min2,Max2));
         return NewPos;
     }
 }

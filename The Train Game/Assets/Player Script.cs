@@ -30,7 +30,7 @@ public class TheScript : MonoBehaviour
             {
                 player.velocity = new Vector2(Movement_RightLeft * speed * Time.deltaTime, player.velocity.y);
             }
-            if ((Movement_UpDown != 0f) && (JumpAvalable == true))
+            if ((Movement_UpDown != 0f) && (JumpAvalable))
             {
                 JumpAvalable = false;
                 player.velocity = new Vector2(player.velocity.x, Jump);

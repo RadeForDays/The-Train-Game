@@ -867,6 +867,7 @@ MonoBehaviour:
   player: {fileID: 1236390074}
   speed: 12000
   Jump: 12
+  ControllerOn: 1
 --- !u!1 &1349074393
 GameObject:
   m_ObjectHideFlags: 0
