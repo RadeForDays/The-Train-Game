@@ -10,14 +10,12 @@ public class VentScript : MonoBehaviour
     private GameObject player;
     private SpriteRenderer SR;
     public float MaxBound;
-    private TheScript playerscript;
     public TMPro.TMP_Text EText; 
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         SR = GetComponent<SpriteRenderer>();
-        playerscript = player.gameObject.GetComponent("TheScript") as TheScript;
         EText = GameObject.FindGameObjectWithTag("Text").GetComponent<TMPro.TMP_Text>();
     }
     // Update is called once per frame
@@ -40,7 +38,7 @@ public class VentScript : MonoBehaviour
         Vector3 pos_vent = transform.position;
         if ((pos_player.x - pos_vent.x) < MaxBound & (pos_player.x - pos_vent.x) > -MaxBound)
         {
-            playerscript.MovingToMiniGame();
+            //Need to move to minigame
         }
     }
     void Checkpos()
